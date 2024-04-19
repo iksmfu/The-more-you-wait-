@@ -14,28 +14,42 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: #f0f0f0;
             font-family: 'Arial', sans-serif;
         }
 
         .container {
             text-align: center;
-            padding: 20px;
+            padding: 40px;
+            background-color: white;
             border: 2px solid #ff4500;
             border-radius: 10px;
-            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
             font-size: 2.5rem;
             color: #ff4500;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
         }
 
-        p {
-            font-size: 1.2rem;
-            color: #555;
+        .loading {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #ccc;
+            border-top-color: #ff4500;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
     </style>
 </head>
@@ -43,7 +57,7 @@
 <body>
     <div class="container">
         <h1>Website is Under Maintenance</h1>
-        <p>We are working hard to improve the site. Please check back later.</p>
+        <div class="loading"></div>
     </div>
 </body>
 
