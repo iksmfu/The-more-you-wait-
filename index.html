@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="icon" href="resources/forloopico.jpg" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <title>iksm wtf</title>
+    <meta
+      name="description"
+      content="Normal Developer & Programmer"
+    />
+    <style>
+      * {
+        transition: 1s;
+        font-family: poppins;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      html,
+      body,
+      .viewport {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        perspective: 750px;
+        background: url(resources/bg.jpg) no-repeat 50%;
+        background-size: cover;
+        animation: body-bg 2s infinite ease-in-out;
+      }
+      @keyframes body-bg {
+        0% {
+          background-position: 50% 50%;
+        }
+        33% {
+          background-position: 52.5% 47.5%;
+        }
+        66% {
+          background-position: 47.5% 52.5%;
+        }
+        100% {
+          background-position: 50% 50%;
+        }
+      }
+      .bg-cover {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        backdrop-filter: blur(5px);
+      }
+      .card-shadow {
+        position: absolute;
+        width: 250px;
+        height: 300px;
+        z-index: 1;
+        background: url(resources/card-bg.png) no-repeat center center;
+        background-size: cover;
+        border-radius: 25px;
+        filter: blur(50px) brightness(1.3);
+        animation-name: card-shadow-anim;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+      }
+      @keyframes card-shadow-anim {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(0.8);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+      .card-holder {
+        width: 250px;
+        height: 300px;
+        z-index: 2;
+        background-color: #fff;
+        filter: drop-shadow(-20px 20px 40px #398cc000);
+        border-radius: 25px;
+      }
+      .card-bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 2;
+        filter: brightness(1.3);
+        background: url(resources/card-bg.png) no-repeat center center;
+        background-size: cover;
+        border-radius: 25px;
+      }
+      .mini-card {
+        width: 180px;
+        height: 230px;
+        padding: 20px;
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        border-radius: 25px;
+        z-index: 2;
+        background-color: #ffffffcc;
+        backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+      }
+      .profile-circle {
+        height: 125px;
+        width: 125px;
+        border-radius: 50%;
+        margin-top: 10px;
+        background: url("https://cdn.discordapp.com/avatars/1184009692545028100/5bb2c8b245b473c5148d786526b777a0.webp?size=96") no-repeat center center;
+        background-size: cover;
+      }
+      .user-name {
+        font-size: 25px;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #000;
+      }
+      .user-def {
+        font-size: 15px;
+        margin-top: 7.5px;
+        line-height: 1.25;
+        font-weight: 600;
+        text-align: center;
+        color: #000;
+      }
+      .card-shadow-ch {
+        background: transparent !important;
+        filter: none !important;
+        animation-name: none !important;
+      }
+      .card-holder-ch {
+        background: transparent !important;
+        transform: rotateY(180deg) !important;
+        backface-visibility: hidden !important;
+      }
+      .card-holder-ch .card-bg {
+        filter: none !important;
+      }
+      .card-holder-ch .mini-card {
+        opacity: 0;
+        visibility: hidden;
+      }
+      .anim-theme {
+        background: linear-gradient(135deg, #000836 20%, #380101 100%);
+        height: 120vh;
+        width: 120vw;
+        border-radius: 50vw;
+        position: absolute;
+        top: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0) rotate(90deg);
+        background-color: #193c6d;
+        text-align: center;
+        margin: 0px;
+        overflow: hidden;
+      }
+      .anim-theme-ch {
+        height: 120vh;
+        width: 120vw;
+        transform: translate(-50%, -50%) scale(1) rotate(360deg) !important;
+        border-radius: 0;
+      }
+      .card-holder.back {
+        width: 250px;
+        height: 300px;
+        z-index: 2;
+        background: #000 !important;
+        backface-visibility: hidden !important;
+        filter: drop-shadow(-20px 20px 40px #398cc000);
+        transform: rotateY(-180deg);
+        border-radius: 25px;
+        border: 2px solid #fff;
+        position: absolute;
+      }
+      .card-holder-ch.back {
+        transform: rotateY(0deg) !important;
+      }
+      .card-holder:hover {
+        transform: scale(1.05);
+        animation: bounce 1.5s ease 1s infinite;
+      }
+      @keyframes bounce {
+        0% {
+          transform: scale(1.05);
+        }
+        33% {
+          transform: scale(1.075) rotateZ(1deg) rotateY(-1deg);
+        }
+        66% {
+          transform: scale(1.075) rotateZ(-1deg) rotateY(1deg);
+        }
+        100% {
+          transform: scale(1.05);
+        }
+      }
+      .card-holder.back:hover {
+        animation: none !important;
+        transform: scale(1.02) !important;
+      }
+      .hidden-text {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: calc(100% - 60px);
+        height: calc(100% - 60px);
+        padding: 5px;
+        padding-top: 30px;
+        color: white;
+        transition: 0s ease;
+        font-size: 12px;
+        font-weight: 600;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: space-between;
+        margin-left: 20px;
+        z-index: 3;
+      }
+      .hidden-text .list {
+        display: flex;
+        width: 200px;
+        align-items: center;
+        align-content: center;
+        justify-content: flex-start;
+      }
+      .hidden-text .center {
+        display: flex;
+        width: 200px;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+      }
+      .hidden-text .list a {
+        text-decoration: none;
+        color: white;
+        display: inline-block;
+        position: relative;
+      }
+      .hidden-text .list .sup-anim:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0 !important;
+        left: 0;
+        background-color: #0087ca;
+        border-radius: 50vw;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      .hidden-text .list .sup-anim:before {
+        width: 0 !important;
+        background-color: #0087ca00 !important;
+      }
+      .hidden-text .list a:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        border-radius: 50vw;
+        height: 2px;
+        bottom: -15px;
+        left: 0;
+        background-color: #0087ca;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      .hidden-text .list a:hover:after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+      .hidden-text .list a:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        border-radius: 50vw;
+        transform: scaleX(0);
+        height: 2px;
+        top: -5px;
+        left: 0;
+        background-color: #0087ca;
+        transform-origin: bottom left;
+        transition: transform 0.25s ease-out;
+      }
+      .hidden-text .list a:hover:before {
+        transform: scaleX(1);
+        transform-origin: bottom right;
+      }
+      .hidden-text .list .svg-cont {
+        margin-right: 10px;
+        width: 20px !important;
+        height: 20px !important;
+      }
+      .hidden-text .list svg {
+        width: 20px !important;
+        height: 20px !important;
+      }
+      .hidden-text .list img {
+        height: 25px;
+        margin-right: 5px;
+        margin-left: 5px;
+        margin-bottom: 7.5px;
+      }
+      .hidden-text .center svg {
+        height: 40px;
+        margin-bottom: -10px;
+        margin-right: 7.5px;
+        margin-left: 7.5px;
+      }
+      .hover {
+        height: 100%;
+        width: 100%;
+        background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 3;
+        border-radius: inherit;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        pointer-events: visible;
+        opacity: 0;
+        transition: 0.5s ease !important;
+      }
+      .hover:hover {
+        cursor: pointer;
+        opacity: 1;
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.3);
+      }
+      .hover svg {
+        height: 30px;
+        transform: rotateY(180deg);
+        margin: 20px;
+      }
+      .indi {
+        font-weight: 600;
+        font-size: 17.5px;
+        color: #000;
+        text-align: center;
+      }
+      iframe {
+        width: 100vw;
+        height: 100vh;
+        border: none;
+        pointer-events: none;
+      }
+      @media only screen and (max-width: 1000px) {
+        .card-holder {
+          transform: scale(2);
+        }
+        .card-holder-ch.back {
+          transform: rotateY(0deg) scale(2) !important;
+        }
+        .card-shadow {
+          transform: scale(2);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="anim-theme" onclick="rblur()">
+      <iframe src="resources/darkbg.html"></iframe>
+    </div>
+    <div class="card-holder" onclick="rfocus()">
+      <div class="card-shadow"></div>
+      <div class="card-bg"></div>
+      <div class="hover">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xmlns:svgjs="http://svgjs.com/svgjs"
+          width="128"
+          height="128"
+          x="0"
+          y="0"
+          viewBox="0 0 24 24"
+          style="enable-background: new 0 0 512 512"
+          xml:space="preserve"
+        >
+          <g>
+            <path
+              xmlns="http://www.w3.org/2000/svg"
+              d="M21,10.003c-.209-8.623-12.438-9.493-13.911-1.062l-3.086,1.122C3.959,4.53,8.469,0,14,.003c13.287,.506,13.223,19.582-.061,19.997l1.122-3.086c3.357-.514,5.939-3.413,5.939-6.911Zm-6.69-.309c1.183,1.183,1.735,2.776,1.585,4.378,1.535-.716,2.606-2.263,2.606-4.069,.019-4.795-6.642-6.192-8.577-1.88,1.615-.205,3.227,.42,4.386,1.572ZM.442,21.439l2.645-2.645-1.666-1.666c-.642-.642-.907-1.553-.711-2.439,.197-.886,.823-1.6,1.676-1.91l6.838-2.486c1.294-.47,2.699-.156,3.672,.815,.972,.972,1.284,2.379,.814,3.671l-2.486,6.838c-.31,.853-1.024,1.479-1.91,1.676-.873,.196-1.798-.066-2.439-.711l-1.666-1.666-2.645,2.645c-1.393,1.381-3.502-.729-2.121-2.121Zm8.154-1.377l2.293-6.309c.095-.261-.031-.44-.116-.524-.083-.085-.262-.215-.524-.116l-6.309,2.293,4.656,4.656Z"
+              fill="#000000"
+              data-original="#000000"
+            ></path>
+          </g>
+        </svg>
+        <div class="indi">
+           <br />
+          click here!
+        </div>
+      </div>
+      <div class="mini-card">
+        <div class="profile-circle"></div>
+        <div class="user-name">iksm.</div>
+        <div class="user-def">Developer.</div>
+      </div>
+    </div>
+    <div class="card-holder back">
+      <div class="hidden-text">
+        <div class="list center">
+          <img src="https://uxwing.com/wp-content/themes/uxwing/download/brands-and-social-media/discord-round-color-icon.png" alt="Discord Developer" title="Discord Developer" />
+          <img src="https://www.freepnglogos.com/uploads/tik-tok-logo-png/tik-tok-april-tutuapp-5.png" alt="Tiktoker" title="TikToker" />
+          <img src="https://www.freepnglogos.com/uploads/play-youtube-youtube-app-logo-youtube-logo-youtube--24.png" alt="Youtuber" title="Youtuber" />
+          <img src="https://cdn.discordapp.com/attachments/1229086717437284384/1231292499050627152/image.png?ex=66366d80&is=6623f880&hm=f42ab6dfeac3f050c5bcdc3a4a3751bf968ed0c413949dbbe3ccab299b4ee6af&" alt="Programmer" title="Programmer" />
+
+        </div>
+        <div class="list">
+          <div class="svg-cont">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M12,0A10.513,10.513,0,0,0,1.5,10.5c0,2.826,2.2,6.766,6.541,11.709a5.275,5.275,0,0,0,7.92,0C20.3,17.267,22.5,13.327,22.5,10.5A10.513,10.513,0,0,0,12,0Zm1.706,20.231a2.33,2.33,0,0,1-3.412,0c-3.683-4.195-5.8-7.742-5.8-9.73a7.5,7.5,0,0,1,15,0C19.5,12.489,17.389,16.036,13.706,20.231Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M12,6.055a4.363,4.363,0,1,0,4.363,4.363A4.368,4.368,0,0,0,12,6.055Zm0,5.726a1.363,1.363,0,1,1,1.363-1.363A1.364,1.364,0,0,1,12,11.781Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          iksm, wtf.
+        </div>
+        <div class="list">
+          <div class="svg-cont">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M15.938,8.288c.298,1.696-.509,3.391-2.008,4.217,0,0-.415,.218-.466,.245-.157,.677-.757,1.251-1.463,1.251-.811-.023-1.5-.688-1.5-1.5,0-1.585,1.13-2.176,1.737-2.493l.243-.129c.291-.16,.596-.537,.502-1.071-.067-.383-.406-.722-.789-.789-.613-.11-1.129,.316-1.224,.781-.165,.811-.957,1.33-1.769,1.171-.812-.165-1.336-.957-1.171-1.769,.429-2.11,2.531-3.518,4.683-3.139,1.615,.283,2.941,1.61,3.225,3.225Zm-3.938,7.712c-.828,0-1.5,.672-1.5,1.5s.672,1.5,1.5,1.5,1.5-.672,1.5-1.5-.672-1.5-1.5-1.5ZM24,5.5v13c0,3.032-2.467,5.5-5.5,5.5H5.5c-3.033,0-5.5-2.468-5.5-5.5V5.5C0,2.467,2.467,0,5.5,0h13c3.033,0,5.5,2.467,5.5,5.5Zm-3,0c0-1.378-1.122-2.5-2.5-2.5H5.5c-1.378,0-2.5,1.122-2.5,2.5v13c0,1.379,1.122,2.5,2.5,2.5h13c1.378,0,2.5-1.121,2.5-2.5V5.5Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          Programmer <br /> Developer
+        </div>
+        <div class="list">
+          <div class="svg-cont">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M24,12.5v6A5.506,5.506,0,0,1,18.5,24H5.5A5.506,5.506,0,0,1,0,18.5V8.5A5.506,5.506,0,0,1,5.5,3h4a1.5,1.5,0,0,1,0,3h-4A2.493,2.493,0,0,0,3.3,7.336l6.931,6.932a2.562,2.562,0,0,0,3.536,0l1.224-1.3a1.5,1.5,0,1,1,2.182,2.06l-1.255,1.328a5.521,5.521,0,0,1-7.808.032L3,11.278V18.5A2.5,2.5,0,0,0,5.5,21h13A2.5,2.5,0,0,0,21,18.5v-6A1.5,1.5,0,0,1,24,12.5ZM14.5,7H17V9.5a1.5,1.5,0,0,0,3,0V7h2.5a1.5,1.5,0,0,0,0-3H20V1.5a1.5,1.5,0,0,0-3,0V4H14.5A1.5,1.5,0,0,0,14.5,7Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          <a
+            class="sup-anim"
+            target="_blank"
+            href="mailto:info@iksm.wtf"
+          >
+            info@iksm.wtf
+          </a>
+        </div>
+        <div class="list">
+          <div class="svg-cont">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <path
+                  xmlns="http://www.w3.org/2000/svg"
+                  d="M20.1,20.182a1.5,1.5,0,0,1-1.156-2.455,9.05,9.05,0,0,0,0-11.454,1.5,1.5,0,0,1,2.313-1.91,12.065,12.065,0,0,1,0,15.274A1.5,1.5,0,0,1,20.1,20.182ZM4.855,19.838a1.5,1.5,0,0,0,.2-2.111,9.049,9.049,0,0,1,0-11.454,1.5,1.5,0,0,0-2.313-1.91,12.065,12.065,0,0,0,0,15.274,1.5,1.5,0,0,0,2.111.2ZM19,12c-.3,9.251-13.707,9.249-14,0C5.294,2.749,18.707,2.751,19,12Zm-5.5,3.5a1.5,1.5,0,0,0-3,0A1.5,1.5,0,0,0,13.5,15.5Zm0-7a1.5,1.5,0,0,0-3,0v3a1.5,1.5,0,0,0,3,0Z"
+                  fill="#ffffff"
+                  data-original="#000000"
+                ></path>
+              </g>
+            </svg>
+          </div>
+          Available for hire.
+        </div>
+        <div class="list center">
+          <a
+            href="https://termed.iksm.lol"
+            target="_blank"
+            title="Discord Termed Check"
+          >
+          <img
+          src="https://cdn.discordapp.com/attachments/1229086717437284384/1231298470875365416/image.png?ex=6636730f&is=6623fe0f&hm=14d2073a46505bfba8757889e78c2dd55735ec4483242c9b0a3db4de79c7426b&"
+          alt="Term Check"
+          style="filter: invert(100%); margin-bottom: -12.5px"
+
+          </a>
+          <a
+            href="https://discord.gg/BC9QgydFVZ"
+            target="_blank"
+            title="Discord Server"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <g xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M20.317,4.37c-1.53-0.702-3.17-1.219-4.885-1.515c-0.031-0.006-0.062,0.009-0.079,0.037   c-0.211,0.375-0.445,0.865-0.608,1.249c-1.845-0.276-3.68-0.276-5.487,0C9.095,3.748,8.852,3.267,8.641,2.892   C8.624,2.864,8.593,2.85,8.562,2.855C6.848,3.15,5.208,3.667,3.677,4.37C3.664,4.375,3.652,4.385,3.645,4.397   c-3.111,4.648-3.964,9.182-3.546,13.66c0.002,0.022,0.014,0.043,0.031,0.056c2.053,1.508,4.041,2.423,5.993,3.029   c0.031,0.01,0.064-0.002,0.084-0.028c0.462-0.63,0.873-1.295,1.226-1.994c0.021-0.041,0.001-0.09-0.042-0.106   c-0.653-0.248-1.274-0.55-1.872-0.892c-0.047-0.028-0.051-0.095-0.008-0.128c0.126-0.094,0.252-0.192,0.372-0.291   c0.022-0.018,0.052-0.022,0.078-0.01c3.928,1.793,8.18,1.793,12.061,0c0.026-0.012,0.056-0.009,0.079,0.01   c0.12,0.099,0.246,0.198,0.373,0.292c0.044,0.032,0.041,0.1-0.007,0.128c-0.598,0.349-1.219,0.645-1.873,0.891   c-0.043,0.016-0.061,0.066-0.041,0.107c0.36,0.698,0.772,1.363,1.225,1.993c0.019,0.027,0.053,0.038,0.084,0.029   c1.961-0.607,3.95-1.522,6.002-3.029c0.018-0.013,0.029-0.033,0.031-0.055c0.5-5.177-0.838-9.674-3.548-13.66   C20.342,4.385,20.33,4.375,20.317,4.37z M8.02,15.331c-1.183,0-2.157-1.086-2.157-2.419s0.955-2.419,2.157-2.419   c1.211,0,2.176,1.095,2.157,2.419C10.177,14.246,9.221,15.331,8.02,15.331z M15.995,15.331c-1.182,0-2.157-1.086-2.157-2.419   s0.955-2.419,2.157-2.419c1.211,0,2.176,1.095,2.157,2.419C18.152,14.246,17.206,15.331,15.995,15.331z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <a
+            href="https://iksm.wtf/more"
+            title="More Info!"
+            target="_blank"
+          >
+            <img
+              src="https://cdn.discordapp.com/attachments/1229086717437284384/1231296335026851891/image.png?ex=66367112&is=6623fc12&hm=54ae719201195469c90468e1660076c5b96bcdc609c0b38c8cae01134d92329f&"
+              alt="More Info!"
+              style="filter: invert(100%); margin-bottom: -12.5px"
+            />
+          </a>
+          <a
+            href="https://www.tiktok.com/@iksm.exe"
+            title="Tiktok"
+            target="_blank"
+          >
+          <img
+          src="https://cdn.discordapp.com/attachments/1229086717437284384/1231296729740214343/image.png?ex=66367170&is=6623fc70&hm=2e71ec6ee8739706d373f93b0c84853c3344671c462fd6ef3eb9cbca07316e28&"
+          alt="TikTok"
+          style="filter: invert(100%); margin-bottom: -12.5px"
+
+          </a>
+          <a
+            href="https://www.youtube.com/@iksm_"
+            title="YouTube"
+            target="_blank"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              version="1.1"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:svgjs="http://svgjs.com/svgjs"
+              width="128"
+              height="128"
+              x="0"
+              y="0"
+              viewBox="0 0 24 24"
+              style="enable-background: new 0 0 512 512"
+              xml:space="preserve"
+            >
+              <g>
+                <g xmlns="http://www.w3.org/2000/svg" id="XMLID_184_">
+                  <path
+                    d="M23.498,6.186c-0.276-1.039-1.089-1.858-2.122-2.136C19.505,3.546,12,3.546,12,3.546s-7.505,0-9.377,0.504   C1.591,4.328,0.778,5.146,0.502,6.186C0,8.07,0,12,0,12s0,3.93,0.502,5.814c0.276,1.039,1.089,1.858,2.122,2.136   C4.495,20.454,12,20.454,12,20.454s7.505,0,9.377-0.504c1.032-0.278,1.845-1.096,2.122-2.136C24,15.93,24,12,24,12   S24,8.07,23.498,6.186z M9.546,15.569V8.431L15.818,12L9.546,15.569z"
+                    fill="#ffffff"
+                    data-original="#000000"
+                  ></path>
+                </g>
+              </g>
+            </svg>
+          </a>
+          <a
+            href="https://www.buymeacoffee.com/ForLoopCoffee"
+            title="Buymeacoffee"
+            target="_blank"
+          >
+
+
+        </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      function rfocus() {
+        document.querySelector(".card-shadow").classList.add("card-shadow-ch");
+        document.querySelector(".card-holder").classList.add("card-holder-ch");
+        document
+          .querySelector(".card-holder.back")
+          .classList.add("card-holder-ch");
+        document.querySelector(".anim-theme").classList.add("anim-theme-ch");
+        document.querySelector(".hidden-text").classList.add("hidden-text-ch");
+      }
+      function rblur() {
+        document
+          .querySelector(".card-shadow")
+          .classList.remove("card-shadow-ch");
+        document
+          .querySelector(".card-holder.back")
+          .classList.remove("card-holder-ch");
+        document
+          .querySelector(".card-holder")
+          .classList.remove("card-holder-ch");
+        document.querySelector(".anim-theme").classList.remove("anim-theme-ch");
+        document
+          .querySelector(".hidden-text")
+          .classList.remove("hidden-text-ch");
+      }
+    </script>
+  </body>
+</html>
