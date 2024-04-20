@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iksm.fun</title>
+    <style>
+        body {
+            user-select: none;
+            background: rgb(25, 25, 25);
+            background: linear-gradient(90deg, rgba(25, 25, 25, 1) 12%, rgba(57, 56, 56, 1) 100%);
+            color: white;
+            font-family: 'proxima-nova', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin-left: -0.50%;
+            opacity: 0;
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .button-box {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            width: 80%; /* Adjust width as needed */
+            max-width: 800px; /* Set a maximum width to ensure the buttons don't spread too wide */
+            margin: 0 auto; /* Center the buttons horizontally */
+            animation: fadeInText 3s ease-in-out forwards;
+        }
+
+        .button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #2525256e;
+            color: rgba(255, 255, 255, 0.87);
+            padding: 12px 20px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            font-size: 16px;
+            /* Adjust button styles as needed */
+            flex: 0 0 calc(33.33% - 20px); /* Adjust the width of each button */
+            max-width: calc(33.33% - 20px); /* Adjust the maximum width of each button */
+        }
+
+        .button:hover {
+            background-color: #1616169f;
+        }
+
+        .button svg {
+            margin-right: 10px;
+        }
+
+        @keyframes fadeInText {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .loading-image {
+            width: 100px;
+            height: 100px;
+            animation: zoomInOut 2s infinite alternate;
+        }
+
+        @keyframes zoomInOut {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .content {
+            display: none;
+        }
+
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out forwards;
+        }
+
+    </style>
+</head>
+<body>
+
+<img src="https://cdn.discordapp.com/avatars/1184009692545028100/5bb2c8b245b473c5148d786526b777a0.webp?size=96" alt="Loading..." class="loading-image">
+
+<div class="content">
+    <div class="button-box fade-in">
+        <a href="https://iksm.lol" class="button">Bio</a>
+        <a href="https://iksm.site" class="button">Bio 2</a>
+        <a href="https://miba.site" class="button">Shop</a>
+        <a href="https://iksm.wtf" class="button">Back</a>
+    </div>
+</div>
+
+<script>
+    // Simulate loading time
+    setTimeout(function () {
+        document.querySelector('.loading-image').style.display = 'none';
+        document.querySelector('.content').style.display = 'block';
+    }, 2000); // Adjust the time as needed
+</script>
+
+</body>
+</html>
